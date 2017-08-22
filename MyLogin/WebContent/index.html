@@ -4,23 +4,34 @@
 </head>
 <body>
 	<form action="/MyLogin/AutenticarUsuarioServlet" method="post">
-		<center><h1>Tela Login</h1>
-		<hr>
-			<hr>	
-		<table>
-			<tr>
-				<td>Email:</td>
-				<td><input type="text" name="email" id="email" value="" /></td>
-			</tr>
-			<tr>
-				<td>Senha:</td>
-				<td><input type="password" name="senha" id="senha" value="" /></td>
-			</tr>
-			<tr>
-				<td><input type="submit" value="Entrar" /></td>
-				      <td><input type="reset" value="Limpar" /></td>
-			</tr>
-		</table></center>
+		<center>
+			<h1>Tela Login</h1>
+			<hr>
+			<hr>
+			<table>
+				<tr>
+					<td>Email:</td>
+					<td><input type="text" name="email" id="email" value="" /></td>
+				</tr>
+				<tr>
+					<td>Senha:</td>
+					<td><input type="password" name="senha" id="senha" value="" /></td>
+				</tr>
+				<tr>
+					<td align='center'><input type="submit" value="Entrar" /></td>
+					<td align="right"><input type="reset" value="Limpar" /></td>
+
+
+					</td>
+				</tr>
+			</table>
+		</center>
+	</form>
+
+	<form action="/MyLogin/CadastrarUsuarioServlet" method="get">
+		<center>
+			<input type="submit" value="Cadastrar" />
+		</center>
 	</form>
 </body>
 </html>

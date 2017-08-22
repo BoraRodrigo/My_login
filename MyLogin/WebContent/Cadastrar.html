@@ -2,34 +2,40 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Cadastrar</title>
+<title>Cadastrar Usuário</title>
 </head>
 <body>
 	<form action="/MyLogin/CadastrarUsuarioServlet" method="post">
-		<h1>CADASTRAR</h1>
-		<hr>
-		<table>
-			<tr>
-				<td>Email:</td>
-				<td><input type="text" name="email" id="email" value="" /></td>
-			</tr>
-			<tr>
-				<td>Senha:</td>
-				<td><input type="password" name="senha" id="senha" value="" /></td>
-			</tr>
-			<tr>
-				<td>CPF:</td>
-				<td><input type="text" name="cpf" id="cpf" value="" /></td>
-			</tr>
-			<tr>
-				<td>NOME:</td>
-				<td><input type="text" name="nome" id="nome" value="" /></td>
-			</tr>
-			<tr>
-				<td><input type="submit" value="Cadastrar" /></td>
-				<td><input type="reset" value="Limpar" /></td>
-			</tr>
-		</table>
+		<center>
+			<h1>CADASTRAR USUÁRIO</h1>
+			<hr>
+			<table>
+				<tr>
+					<td>Email:</td>
+					<td><input type="text" name="email" id="email" value="" /></td>
+				</tr>
+				<tr>
+					<td>Senha:</td>
+					<td><input type="password" name="senha" id="senha" value="" /></td>
+				</tr>
+				<tr>
+					<td>CPF:</td>
+					<td><input type="text" name="cpf" id="cpf" value="" /></td>
+				</tr>
+				<tr>
+					<td>NOME:</td>
+					<td><input type="text" name="nome" id="nome" value="" /></td>
+				</tr>
+				<tr>
+					<td><input type="submit" value="Cadastrar" /></td>
+					<td><input type="reset" value="Limpar" /></td>
+				</tr>
+			</table>
 	</form>
+	<form action="/MyLogin/listarClientesServlet" method="post">
+		<input type="submit" value="Listar" /> <input type="button"
+			value="Voltar" onClick="history.go(-1)">
+		
+	</form></center>
 </body>
 </html>

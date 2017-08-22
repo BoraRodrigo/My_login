@@ -1,6 +1,9 @@
 package br.edu.facear.servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,20 +13,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.edu.facear.model.Cliente;
-import br.edu.facear.service.AutenticarUsuarioService;
+import br.edu.facear.service.CadastrarUsuarioService;
 import br.edu.facear.util.MyClassException;
 
 /**
- * Servlet implementation class AutenticarUsuarioServlet
+ * Servlet implementation class listarClientesServlet
  */
-@WebServlet("/AutenticarUsuarioServlet")
-public class AutenticarUsuarioServlet extends HttpServlet {
+@WebServlet("/listarClientesServlet")
+public class listarClientesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Default constructor.
+	 * @see HttpServlet#HttpServlet()
 	 */
-	public AutenticarUsuarioServlet() {
+	public listarClientesServlet() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 
@@ -34,7 +38,7 @@ public class AutenticarUsuarioServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("Acesso negado!Filha da puta");
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -42,33 +46,25 @@ public class AutenticarUsuarioServlet extends HttpServlet {
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-		throws ServletException, IOException {
-		String email = request.getParameter("email");// pega o nome do login
-		System.out.println("Olá " + email);
+			throws ServletException, IOException {
 
-		String senha = request.getParameter("senha");// pega A senha do login
-		System.out.println("Sua senha é " + senha);
-		String nextPage = "/index.html";
-
-		AutenticarUsuarioService service = new AutenticarUsuarioService();
-
-		// Obter do banco de dados
+		CadastrarUsuarioService service = new CadastrarUsuarioService();
+		String nextPage = "/Cadastrar.html";
 		try {
-			Cliente c = service.autenticar(email, senha);
-			// Colocar na area de memoria de sessão
-			request.setAttribute("cliente", c);
-			if (c != null) {
-				nextPage = "/principal.jsp";// Somente paginas Jsp obtem informaçoes da sessão
-				//nextPage = "/Cadastrar.html";
-			}
-		} catch (MyClassException e) {
+
+			List<Cliente> listaClientes = new ArrayList<>();
+			listaClientes = service.listarClientes();
+
+			request.setAttribute("listaClientes", listaClientes);
+			nextPage = "/listarClientes.jsp";
+
+		} catch (SQLException | MyClassException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		RequestDispatcher rd = getServletContext().getRequestDispatcher(nextPage);
 		/// redirecionamento carrega nova pagina
 		rd.forward(request, response);
-
 	}
 
 }
