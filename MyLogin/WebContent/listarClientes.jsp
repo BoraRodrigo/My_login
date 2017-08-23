@@ -9,38 +9,58 @@
 </head>
 <body>
 	<center>
-	<h1>Lista de Clientes</h1>
-	<for action="/MyLogin/listarClientesServlet" method="post"> <c:choose>
-		<c:when test="${not empty listaClientes}">
-			<table class="table table-striped">
-				<tr>
-					<td>id</td>
-					<td>Nome</td>
-					<td>Cpf</td>
-					<td>Email</td>
-					<td>Senha</td>
-				</tr>
-				<c:forEach var="cliente" items="${listaClientes}">
-					<tr>
-						<td>${cliente.id}</td>
-						<td>${cliente.nome}</td>
-						<td>${cliente.cpf}</td>
-						<td>${cliente.email}</td>
-						<td>${cliente.senha}</td>
-					</tr>
+		<h1>Lista de Clientes</h1>
+		<form action="/MyLogin/listarClientesServlet" method="post">
+			<c:choose>
+				<c:when test="${not empty listaClientes}">
+					<table class="table table-striped">
+						<tr>
+							<td>id</td>
+							<td>Nome</td>
+							<td>Cpf</td>
+							<td>Email</td>
+							<td>Senha</td>
+						</tr>
+						<c:forEach var="cliente" items="${listaClientes}">
+							<tr>
+								<td>${cliente.id}</td>
+								<td>${cliente.nome}</td>
+								<td>${cliente.cpf}</td>
+								<td>${cliente.email}</td>
+								<td>${cliente.senha}</td>
+							</tr>
 
-				</c:forEach>
-			</table>
-		</c:when>
-		<c:otherwise>
-			<br>
-			<div class="alert alert-info">Lista Vazia</div>
-		</c:otherwise>
-	</c:choose>
-	</form>
-	<form action="">
-		<input type="button" value="Voltar" onClick="history.go(-1)">
-	</form>
+						</c:forEach>
+					</table>
+				</c:when>
+				<c:otherwise>
+					<br>
+					<div class="alert alert-info">Lista Vazia</div>
+				</c:otherwise>
+			</c:choose>
+		</form>
+		<table>
+			<tr>
+				<form action="">
+					<td><input type="button" value="Voltar"
+						onClick="history.go(-1)" /></td>
+				</form>
+			</tr>
+			<tr>
+				<form action="/MyLogin/ExcluirUsuarioServlet" method="post">
+					<td><input type="text" name="id" id="id"
+						value="Digite aqui..." /> <input type="submit"
+						value="Excluir Usuario" /></td>
+				</form>
+			</tr>
+			<tr>
+				<form action="/MyLogin/ObterDadosServlet" method="get">
+					<td><input type="text" name="iid" id="iid"
+						value="Digite aqui..." /> <input type="submit" value="ALTERAR" /></td>
+
+				</form>
+			</tr>
+		</table>
 	</center>
 </body>
 </html>

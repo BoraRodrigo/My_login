@@ -16,7 +16,11 @@ public class ClienteDAO extends GenericDAO {
 	private String INSERIR = "insert into TB_CLIENTE values(?,?,?,?);";
 
 	private String LISTAR = "Select *from TB_CLIENTE";
-	
+	private String EXCLUIR = "Delete from TB_CLIENTE where id=?;";
+
+	private String BUSCAR = "Select *from TB_CLIENTE where id=?;";
+
+	private String ALTERAR = "UPDATE TB_CLIENTE SET nome=?,cpf=?,email=?,senha=? WHERE id=?;";
 
 	public Cliente autenticar(String email, String senha) throws SQLException, MyClassException {
 		Cliente c = null;
@@ -73,7 +77,55 @@ public class ClienteDAO extends GenericDAO {
 		closeConnection();
 		return listaClientes;
 	}
-	public void excluir() {
+
+	public void excluir(int id) throws SQLException, MyClassException {
+		opeConnection();
+		ps = con.prepareStatement(EXCLUIR);
+		ps.setInt(1, id);
+
+		ps.executeUpdate();
+
+		ps.close();
+
+		closeConnection();
+	}
+
+	public void alterar(Cliente cliente) throws SQLException, MyClassException {
+		opeConnection();
+		ps = con.prepareStatement(ALTERAR);
+
+		ps.setString(1, cliente.getNome());
+		ps.setString(2, cliente.getCpf());
+		ps.setString(3, cliente.getEmail());
+		ps.setString(4, cliente.getSenha());
+		ps.setInt(5, cliente.getId());
+
+		ps.execute();
+		ps.close();
+
+		closeConnection();
+
+	}
+	public Cliente buscar (int id) throws SQLException, MyClassException {
+		opeConnection();
+		ps=con.prepareStatement(BUSCAR);
+		ps.setInt(1, id);
+		ResultSet rs = ps.executeQuery();
 		
+		Cliente c = new Cliente();
+		
+		while (rs.next()) {
+			
+			c.setId(rs.getInt("id"));
+			c.setNome(rs.getString("nome"));
+			c.setCpf(rs.getString("cpf"));
+			c.setEmail(rs.getString("email"));
+			c.setSenha(rs.getString("senha"));
+			
+			
+		}
+		System.out.println("Nome do Cliente DAO "+c.getNome());
+		closeConnection();
+		return c;
 	}
 }

@@ -2,8 +2,6 @@ package br.edu.facear.servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,16 +15,16 @@ import br.edu.facear.service.CadastrarUsuarioService;
 import br.edu.facear.util.MyClassException;
 
 /**
- * Servlet implementation class listarClientesServlet
+ * Servlet implementation class AlterarUsuarioServlet
  */
-@WebServlet("/listarClientesServlet")
-public class listarClientesServlet extends HttpServlet {
+@WebServlet("/AlterarUsuarioServlet")
+public class AlterarUsuarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public listarClientesServlet() {
+	public AlterarUsuarioServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -48,25 +46,22 @@ public class listarClientesServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		CadastrarUsuarioService service = new CadastrarUsuarioService();
-		String nextPage = "/Cadastrar.html";
+		String id = request.getParameter("id");
+		String nome = request.getParameter("nome");
+		String email = request.getParameter("email");
+		String cpf = request.getParameter("cpf");
+		String senha = request.getParameter("senha");
+		
+		CadastrarUsuarioService service = new  CadastrarUsuarioService();
 		try {
-
-			List<Cliente> listaClientes = new ArrayList<>();
-			listaClientes = service.listarClientes();
+			service.alterar(id,email, senha, nome, cpf);
 			
-			
-
-			request.setAttribute("listaClientes", listaClientes);
-			nextPage = "/listarClientes.jsp";
-
+			CadastrarUsuarioService service2= new CadastrarUsuarioService();
+			service2.listarClientes();
 		} catch (SQLException | MyClassException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		RequestDispatcher rd = getServletContext().getRequestDispatcher(nextPage);
-		/// redirecionamento carrega nova pagina
-		rd.forward(request, response);
 	}
 
 }
