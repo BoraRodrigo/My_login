@@ -1,6 +1,30 @@
 <html>
 <head>
 <title>Index.html</title>
+<style>
+INPUT.MeuInput {
+     width: 125px;
+     height: 30px;
+     font-family: verdana;
+     background-color:green;
+     font-style: inherit;
+     font-size: large;
+	 border:medium;	    
+     border-color: black;
+}
+</style>
+
+<style >
+INPUT.MeuInput2 {
+     width: 125px;
+     height: 20px;
+     font-family: verdana;
+     background-color:white;
+     font-style: inherit;
+     font-size: large;	    
+     border-color: black;
+}
+</style>
 </head>
 <body>
 	<form action="/MyLogin/AutenticarUsuarioServlet" method="post">
@@ -10,16 +34,16 @@
 			<hr>
 			<table>
 				<tr>
-					<td>Email:</td>
-					<td><input type="text" name="email" id="email" value="" /></td>
+					<td> &#9993 Email:</td>
+					<td><input type="text" class="MeuInput2" name="email" id="email" value="" /></td>
 				</tr>
 				<tr>
-					<td>Senha:</td>
-					<td><input type="password" name="senha" id="senha" value="" /></td>
+					<td>&#9760 Senha:</td>
+					<td><input type="password" class="MeuInput2" name="senha" id="senha" value="" /></td>
 				</tr>
 				<tr>
-					<td align='center'><input type="submit" value="Entrar" /></td>
-					<td align="right"><input type="reset" value="Limpar" /></td>
+					<td align='center'><input type="submit" class="MeuInput" value="&#8680 Entrar" /></td>
+					<td align="right"><input type="reset" class="MeuInput" value="&#10000 Limpar" /></td>
 
 
 					</td>
@@ -30,7 +54,7 @@
 
 	<form action="/MyLogin/CadastrarUsuarioServlet" method="get">
 		<center>
-			<input type="submit" value="Cadastrar" />
+			<input type="submit" class="MeuInput" value="&#9787 Cadastrar" />
 		</center>
 	</form>
 </body>

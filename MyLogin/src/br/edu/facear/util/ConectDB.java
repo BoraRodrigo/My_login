@@ -19,7 +19,7 @@ public class ConectDB {
 		//	System.setProperty("com.microsoft.sqlserver.jdbc.SQLServerDriver", driver);
 			con = DriverManager.getConnection(caminho,usuario,senha);
 			DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
-			JOptionPane.showMessageDialog(null, "Conectado ao Banco de Dados");
+			
 			return con;
 		} catch (Exception e) {
 			MyClassException obj = new MyClassException("Erro em ClassNotFoundException");

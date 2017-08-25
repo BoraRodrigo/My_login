@@ -2,6 +2,8 @@ package br.edu.facear.servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.edu.facear.model.Cliente;
 import br.edu.facear.service.CadastrarUsuarioService;
 import br.edu.facear.util.MyClassException;
 
@@ -19,41 +22,52 @@ import br.edu.facear.util.MyClassException;
 @WebServlet("/ExcluirUsuarioServlet")
 public class ExcluirUsuarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ExcluirUsuarioServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public ExcluirUsuarioServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		CadastrarUsuarioService service = new CadastrarUsuarioService();
 		String id = request.getParameter("id");
 		int ID = Integer.parseInt(id);
-	
-		
+
 		try {
 			service.excluir(ID);
+
+			// Carrega novamente a lista de Usuarios
+			List<Cliente> listaClientes = new ArrayList<>();
+			listaClientes = service.listarClientes();
+			request.setAttribute("listaClientes", listaClientes);
+			////
+
+			String nextPage = "/listarClientes.jsp";
 			
-			String nextPage="/listarClientes.jsp";
+			request.setAttribute("mensagemExluido", "Excluido Com sucesso");
 			
-		    RequestDispatcher dispatcher= getServletContext().getRequestDispatcher(nextPage);
+
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
 			dispatcher.forward(request, response);
-			
-			
+
 		} catch (NumberFormatException | SQLException | MyClassException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

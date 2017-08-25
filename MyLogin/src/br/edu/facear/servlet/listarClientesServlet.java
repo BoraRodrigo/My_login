@@ -54,8 +54,6 @@ public class listarClientesServlet extends HttpServlet {
 
 			List<Cliente> listaClientes = new ArrayList<>();
 			listaClientes = service.listarClientes();
-			
-			
 
 			request.setAttribute("listaClientes", listaClientes);
 			nextPage = "/listarClientes.jsp";

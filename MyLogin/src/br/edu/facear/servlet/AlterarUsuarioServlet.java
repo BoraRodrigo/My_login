@@ -2,6 +2,8 @@ package br.edu.facear.servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -56,8 +58,14 @@ public class AlterarUsuarioServlet extends HttpServlet {
 		try {
 			service.alterar(id,email, senha, nome, cpf);
 			
-			CadastrarUsuarioService service2= new CadastrarUsuarioService();
-			service2.listarClientes();
+			List<Cliente> listaClientes = new ArrayList<>();
+			listaClientes = service.listarClientes();
+			request.setAttribute("listaClientes", listaClientes);
+			
+			String nextPage = "/listarClientes.jsp";
+
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
+			dispatcher.forward(request, response);
 		} catch (SQLException | MyClassException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
