@@ -57,6 +57,7 @@ table.linhasAlternadas tr.even{
 							<td bgcolor="gren">Cpf</td>
 							<td bgcolor="gren">Email</td>
 							<td bgcolor="gren">Senha</td>
+							<td bgcolor="gren">Dados</td>
 						</tr>
 						<c:forEach var="cliente" items="${listaClientes}">
 							<tr>
@@ -65,6 +66,7 @@ table.linhasAlternadas tr.even{
 								<td>${cliente.cpf}</td>
 								<td>${cliente.email}</td>
 								<td>${cliente.senha}</td>
+								<td><a href="MyLogin/AlterarUsuarioServlet?id=${cliente.id}">Exibir </a></td>	
 							</tr>
 
 						</c:forEach>
@@ -90,7 +92,7 @@ table.linhasAlternadas tr.even{
 				<form action="/MyLogin/ObterDadosServlet" method="get">
 					<td><input type="text" class="MeuInput2"  name="iid" id="iid"
 						value="Digite aqui..." /> <input type="submit" class="MeuInput" value="&#9998 ALTERAR" /></td>
-
+					
 				</form>
 			</tr>
 		</table>

@@ -1,0 +1,119 @@
+@charset "ISO-8859-1";
+
+
+/* Chrome, Safari, Opera */
+::-webkit-input-placeholder {}
+ 
+/* Firefox 18- */
+:-moz-placeholder {}
+ 
+/* Firefox 19+ */
+::-moz-placeholder {}
+ 
+/* IE10+ */
+:-ms-input-placeholder {}
+body {
+    background-color: lightblue;
+}
+
+.btn{
+  font-family: arial;
+  font-size:14px;
+  font-weight:700;
+  text-transform: uppercase;
+  border:none;
+  padding:10px;
+  cursor: pointer;
+  display:inline-block;
+  text-decoration: none;
+}
+
+.btn:focus, .btn::-moz-focus-inner{
+  outline:none;
+  border:none;
+}
+.btn{
+  font-family: arial;
+  font-size:14px;
+  text-transform: uppercase;
+  font-weight:700;
+  border:none;
+  padding:10px;
+  cursor: pointer;
+  display:inline-block;
+  text-decoration: none;
+}
+.btn-green{
+  background:green;
+  color:#fff;
+  box-shadow:0 5px 0 #006000;
+}
+.btn-green:hover{
+  background:#006000;
+  box-shadow:0 5px 0 #003f00;
+}
+.btn-purple{
+  background:purple;
+  color:#fff;
+  box-shadow:0 5px 0 #670167;
+}
+.btn-purple:hover{
+  background:red;
+  box-shadow:0 5px 0 #470047;
+}
+.btn-red{
+  background:red;
+  color:#fff;
+  box-shadow:0 5px 0 #d20000;
+}
+.btn-red:hover{
+  background:#d20000;
+  box-shadow:0 5px 0 #b00000;
+}
+.btn-green:active, .btn-purple:active, .btn-red:active{
+color: blue;
+background:green;	
+  position:relative;
+  top:5px;
+  box-shadow:none;
+}
+
+
+.input-class {
+  padding: 5px;
+  text-transform: uppercase;
+  width: 150px;
+  border: 1px solid #6db5f1;
+  -webkit-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+  margin: 10px auto;
+  display: block;
+}
+ 
+.input-class:focus {
+  box-shadow: 0 0 5px #6db5f1;
+  width: 250px;
+}
+ 
+.input-class::-webkit-input-placeholder { /* Chrome, Safari, Opera */
+  color: #6db5f1;
+  font-style: italic;
+}
+ 
+.input-class:-moz-placeholder { /* Firefox 18- */
+  color: #6db5f1;
+  font-style: italic;
+  opacity: 1;
+}
+ 
+.input-class::-moz-placeholder {  /* Firefox 19+ */
+  color: #6db5f1;
+  font-style: italic;
+  opacity: 1;
+}
+ 
+.input-class:-ms-input-placeholder { /* IE10+ */ 
+  color: #6db5f1;
+  font-style: italic; 
+}
+

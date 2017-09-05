@@ -1,6 +1,8 @@
 <html>
 <head>
 <title>Index.html</title>
+
+<link rel="stylesheet" type="text/css" href="estilo.css">
 <style>
 INPUT.MeuInput {
      width: 125px;
@@ -25,8 +27,9 @@ INPUT.MeuInput2 {
      border-color: black;
 }
 </style>
+
 </head>
-<body>
+<body class="">
 	<form action="/MyLogin/AutenticarUsuarioServlet" method="post">
 		<center>
 			<h1>Tela Login</h1>
@@ -50,6 +53,7 @@ INPUT.MeuInput2 {
 				</tr>
 			</table>
 		</center>
+		
 	</form>
 
 	<form action="/MyLogin/CadastrarUsuarioServlet" method="get">
@@ -57,5 +61,15 @@ INPUT.MeuInput2 {
 			<input type="submit" class="MeuInput" value="&#9787 Cadastrar" />
 		</center>
 	</form>
+	
+	<figure class="foto-legenda">
+	<img src="imagem.jpg"/>
+			<figcaption>
+			<h3>Sistema de login Java WEB</h3>
+			<p>ALUNO: Rodrigo Bora</p>
+			<p>Sistemas de Informação FACEAR</p>
+			<p>4° Periodo.</p>
+			</figcaption>
+			</figure>
 </body>
 </html>
